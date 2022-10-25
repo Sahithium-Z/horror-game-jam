@@ -23,10 +23,10 @@ func _physics_process(delta):
 	var movement = Vector2.ZERO
 	
 	movement.x = get_parent().get_node("Player").position.x - self.position.x
-	if movement.x > 0.5:
-		movement.x = 0.5
-	elif movement.x < -0.5:
-		movement.x = -0.5
+	if movement.x > 0.3:
+		movement.x = 0.3
+	elif movement.x < -0.3:
+		movement.x = -0.3
 		
 	if movement.x == 0:
 		apply_friction()
@@ -34,10 +34,10 @@ func _physics_process(delta):
 		apply_acceleration(movement.x)
 		
 	movement.y == get_parent().get_node("Player").position.y - self.position.y
-	print(get_parent().get_node("Player").position.y)
-	print(self.position.y)
-	print(get_parent().get_node("Player").position.y - self.position.y)
-	print(movement.y)
+	#print(get_parent().get_node("Player").position.y)
+	#print(self.position.y)
+	#print(get_parent().get_node("Player").position.y - self.position.y)
+	#print(movement.y)
 	
 	if is_on_floor() && get_parent().get_node("Player").position.y - self.position.y < -16:
 		velocity.y = JUMP_FORCE
@@ -76,3 +76,8 @@ func fall_through():
 func cancel_fall_through():
 	if get_collision_mask_bit(2) == false:
 		set_collision_mask_bit(2, true)
+
+
+func _on_Hurtbox_area_entered(area):
+	get_parent().score += 1
+	queue_free()
