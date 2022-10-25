@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ActualBackground.png-ea4b9639ba8a7d51bfed6aade2d18061.stex"
+path="res://.import/characters_packed.png-0fed0aa1c807ba0d8e5c14a7fe9340d1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/ActualBackground.png"
-dest_files=[ "res://.import/ActualBackground.png-ea4b9639ba8a7d51bfed6aade2d18061.stex" ]
+source_file="res://Player/characters_packed.png"
+dest_files=[ "res://.import/characters_packed.png-0fed0aa1c807ba0d8e5c14a7fe9340d1.stex" ]
 
 [params]
 
