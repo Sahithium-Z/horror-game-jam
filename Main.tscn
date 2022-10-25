@@ -1,15 +1,99 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
+[ext_resource path="res://World/ActualBackground.png" type="Texture" id=2]
+[ext_resource path="res://World/Tile3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Zombie.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Main.gd" type="Script" id=5]
+[ext_resource path="res://World/Overworld (1).mp3" type="AudioStream" id=6]
 
 [node name="Main" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 158, 90 )
+texture = ExtResource( 2 )
+
+[node name="Zombie" parent="." instance=ExtResource( 4 )]
+position = Vector2( 218, 69 )
+JUMP_FORCE = -130
+JUMP_RELEASE_FORCE = -70
+MAX_SPEED = 50
+ACCELERATION = 10
+FRICTION = 8
+AIR_FRICTION = 1
+GRAVITY = 4
+FASTFALL_GRAV = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 62, 31 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Platforms" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 1, 43 )
-shape = SubResource( 1 )
+[node name="Tile23" parent="Platforms" instance=ExtResource( 3 )]
+position = Vector2( 279, 137 )
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Tile3" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 6, 172 )
+
+[node name="Tile4" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 22, 172 )
+
+[node name="Tile5" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 38, 172 )
+
+[node name="Tile6" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 54, 172 )
+
+[node name="Tile7" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 70, 172 )
+
+[node name="Tile8" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 86, 172 )
+
+[node name="Tile9" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 102, 172 )
+
+[node name="Tile10" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 118, 172 )
+
+[node name="Tile11" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 134, 172 )
+
+[node name="Tile12" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 150, 172 )
+
+[node name="Tile13" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 166, 172 )
+
+[node name="Tile14" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 182, 172 )
+
+[node name="Tile15" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 198, 172 )
+
+[node name="Tile16" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 214, 172 )
+
+[node name="Tile17" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 230, 172 )
+
+[node name="Tile18" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 246, 172 )
+
+[node name="Tile19" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 262, 172 )
+
+[node name="Tile20" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 278, 172 )
+
+[node name="Tile21" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 294, 172 )
+
+[node name="Tile22" parent="Ground" instance=ExtResource( 3 )]
+position = Vector2( 310, 172 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

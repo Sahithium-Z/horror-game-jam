@@ -19,24 +19,41 @@ func _physics_process(delta):
 #	elif Input.is_action_just_released("ui_down"):
 #		cancel_fall_through()
 	
-		
-	var input = Vector3.ZERO
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	#if "res://Player/Player.tscn".
+	var movement = Vector2.ZERO
 	
-	if input.x == 0:
+	movement.x = get_parent().get_node("Player").position.x - self.position.x
+	if movement.x > 0.5:
+		movement.x = 0.5
+	elif movement.x < -0.5:
+		movement.x = -0.5
+		
+	if movement.x == 0:
 		apply_friction()
 	else:
-		apply_acceleration(input.x)
-
-	if is_on_floor():
-		if Input.is_action_just_pressed("ui_up"):
-			velocity.y = JUMP_FORCE
-	else:
-		if Input.is_action_just_released("ui_up") and velocity.y < JUMP_RELEASE_FORCE:
-			velocity.y = JUMP_RELEASE_FORCE
+		apply_acceleration(movement.x)
 		
+	movement.y == get_parent().get_node("Player").position.y - self.position.y
+	print(get_parent().get_node("Player").position.y)
+	print(self.position.y)
+	print(get_parent().get_node("Player").position.y - self.position.y)
+	print(movement.y)
+	
+	if is_on_floor() && get_parent().get_node("Player").position.y - self.position.y < -16:
+		velocity.y = JUMP_FORCE
+	else:
 		if velocity.y > 0:
 			velocity.y += FASTFALL_GRAV
+
+#	if is_on_floor():
+#		if Input.is_action_just_pressed("ui_up"):
+#			velocity.y = JUMP_FORCE
+#	else:
+##		if Input.is_action_just_released("ui_up") and velocity.y < JUMP_RELEASE_FORCE:
+#			velocity.y = JUMP_RELEASE_FORCE
+		
+#		if velocity.y > 0:
+#			velocity.y += FASTFALL_GRAV
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 
